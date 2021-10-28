@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { fetchmenus } from './features/menu/actions';
-
+import Testbut from './features/Testbut'
 
 function App() {
   const menus = useSelector((state) => state.menus);
@@ -27,7 +27,7 @@ function App() {
       {menus.length > 0 ? (
         <Switch>
           <Route path="/">
-
+            <Testbut/>
           </Route>
         </Switch>
       ) : (
