@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { fetchmenus } from './features/menu/actions';
-import Testbut from './features/Testbut'
+import Navbar from './features/Navbar';
+import Footer from './features/Footer';
+import Allmenu from './features/Allmenu';
 
 function App() {
   const menus = useSelector((state) => state.menus);
@@ -24,15 +26,18 @@ function App() {
 
   return (
     <>
+      <Navbar/>
       {menus.length > 0 ? (
+        
         <Switch>
           <Route path="/">
-            <Testbut/>
+            <Allmenu/>
           </Route>
         </Switch>
       ) : (
         <div>Loading menus....</div>
       )}
+      <Footer/>
     </>
   )
 }
