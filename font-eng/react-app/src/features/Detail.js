@@ -8,18 +8,18 @@ import PropTypes from 'prop-types';
 
 const Detail = ({ className }) => {
 
-    
+
 
     const { id } = useParams();
     const menus = useSelector((state) => state.menus)
     const menu = menus.find((menu) => menu.menuID === Number(id));
     const [ingredients, setingredients] = useState([]);
 
-    
+
     useEffect(() => {
         async function getingredients() {
             const res = await axios.get(
-                'http://localhost:8080/ingredients/'+id
+                'http://localhost:8080/ingredients/' + id
             );
             console.log(res.data)
             setingredients(res.data)
@@ -27,34 +27,38 @@ const Detail = ({ className }) => {
         getingredients();
 
     }, []);
-   
+
     return (
 
         <>
-        <div className={className}>
-            <div className="top">
-                <img className="menu-image" src={menu.menu_img} />
-                <div className="menu_detail">
-                    <div className="Products__name ">{menu.menu_name_EN}</div>
-                    <small className="Products__type ">{menu.menu_name_TH}</small>
+            <div className={className}>
+                <div className="top">
+                    <img className="menu-image" src={menu.menu_img} />
+                    <div className="menu_detail">
+                        <div className="Products__name ">{menu.menu_name_EN}</div>
+                        <small className="Products__type ">{menu.menu_name_TH}</small>
 
+                    </div>
                 </div>
-            </div>
-            <div className="midder">
-                <div className="Products__name ">Ingredients</div>
-                <div className="menu_detail">
-                    <ul>
-                        {ingredients.map((ingredient) => (
-                            <li className=" ">
-                                {ingredient.ingredients_name}
-                            </li>
+                <div className="midder">
+                    <div className="Products__name ">Ingredients</div>
+                    <div className="menu_detail">
+                        <ul className="ingredient_list">
+                            {ingredients.map((ingredient) => (
+                                <li className=" ">
+                                    <div className="row">
+                                        <div className="col-5">{ingredient.ingredients_name}</div>
+                                        <div className="col-2">{ingredient.qty}</div>
+                                        <div className="col-5">{ingredient.unit}</div>
+                                    </div>
+                                </li>
                             ))}
-                    </ul>
+                        </ul>
+                    </div>
+                    <div className="Products__name ">Cooking Method</div>
+                    <div className="method">{menu.cooking_method}</div>
                 </div>
-                <div className="Products__name ">Cooking Method</div>
-                <div className="method">{menu.cooking_method}</div>
             </div>
-        </div>
         </>
     )
 }
@@ -107,6 +111,11 @@ img.menu-image {
 
 .method{
     margin-left: 3%;
+}
+
+.ingredient_list{
+width: 150%;
+
 }
 
 `
