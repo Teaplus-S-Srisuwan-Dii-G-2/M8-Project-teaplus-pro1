@@ -32,17 +32,11 @@ function Footer({ className }) {
                         <div className="col">
                             <h4>OFTEN LINKS</h4>
                             <ui className="list-unstyled">
-                                <li><Link to="/"><i class="fa fa-home" aria-hidden="true"></i> Home</Link></li>
-                                <li><Link to="/topanime"><i class="fa fa-list-ul" aria-hidden="true"></i>Menu</Link></li>
-                                <li><Link to="/search"><i class="fa fa-search" aria-hidden="true"></i>Calorie calculator</Link></li>
-                                {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-                                {/* <button onClick={() => firebaseConfig.auth().signOut()} class="btn btn-danger">Sign Out</button> */}
+                                <li><Link to="/"><i class="fa fa-home" aria-hidden="true"></i>Home</Link></li>
+                                <li><Link to="/"><i class="fa fa-list-ul" aria-hidden="true"></i>Menu</Link></li>
+                                <li><Link to="#"><i class="fa fa-search" aria-hidden="true"></i>Calorie calculator</Link></li>
                                 <li><Link to="/user"><i class="fa fa-user-circle-o " aria-hidden="true"></i>Insert new menu</Link></li>
-                                <li><Link to="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Profile</Link></li>
-                                {/* <i class="fa fa-sign-out" aria-hidden="true" onClick={() => firebaseConfig.auth().signOut()}></i>Sign Out */}
-                                {/* <li>Anime List</li>
-                            <li>Search Anime</li>
-                            <li>Login</li> */}
+                                <li><Link to="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Profile</Link></li>
                             </ui>
                         </div>
                         {/* Column3 */}
@@ -79,7 +73,7 @@ export default styled(Footer)`
     position: relative;
     bottom: 0;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 3%;
   }
 .list-unstyled .footer-iconx{
     margin: 10px 0;

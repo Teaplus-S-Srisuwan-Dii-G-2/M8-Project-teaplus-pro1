@@ -7,28 +7,32 @@ import PropTypes from 'prop-types';
 
 function Card({item,className}) {
     
-    function showdetail(item_name,item_img,item_method) {
+    function showdetail(item_name,item_img,item_description,menuID) {
         Swal.fire({
             title: item_name,
-            text: item_method,
+            text: item_description,
             imageUrl: item_img,
             imageWidth: 800,
-            imageHeight: 400,
+            imageHeight: 300,
             imageAlt: item_name,
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, let do it!'
-          })
+          }).then(function(result) {
+            if (result.isConfirmed){
+            window.location = '/Detail/'+menuID;
+            }
+        });
     }
 
 
     return (
         <li className={className}>
-        <a onClick={()=>showdetail(item.menu_name,item.menu_img,item.cooking_method)}>
-        <img className="Products__image" src={item.menu_img} alt={item.menu_name} />
-        <div className="Products__name">{item.menu_name}</div>
-        <small className="Products__type">{item.description}</small>
+        <a onClick={()=>showdetail(item.menu_name_TH,item.menu_img,item.description,item.menuID)}>
+        <img className="Products__image" src={item.menu_img} alt={item.menu_name_TH} />
+        <div className="Products__name">{item.menu_name_EN}</div>
+        <small className="Products__type">{item.menu_name_TH}</small>
       </a>
         </li>
     )
@@ -48,7 +52,8 @@ padding-right: 12px;
 
   .Products__name {
     color: #333;
-
+    font-size: xx-large;
+    font-family: Georgia, serif;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

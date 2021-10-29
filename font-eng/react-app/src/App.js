@@ -7,10 +7,12 @@ import { fetchmenus } from './features/menu/actions';
 import Navbar from './features/Navbar';
 import Footer from './features/Footer';
 import Allmenu from './features/Allmenu';
-
+import Detail from './features/Detail';
+import Newmenu from './features/menu/Newmenu';
 function App() {
   const menus = useSelector((state) => state.menus);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     async function getmenus() {
@@ -22,14 +24,21 @@ function App() {
     }
 
     getmenus();
+    
+   
   }, []);
 
   return (
     <>
       <Navbar/>
-      {menus.length > 0 ? (
-        
+      {menus.length > 0 ? ( 
         <Switch>
+          <Route path="/Newmenu">
+            <Newmenu/>
+            </Route>
+          <Route path="/Detail/:id">
+            <Detail/>
+          </Route>
           <Route path="/">
             <Allmenu/>
           </Route>

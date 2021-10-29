@@ -11,7 +11,7 @@ const menus = useSelector ((state) => state.menus)
 
     return (
         <div className={className}>
-            <h1>New Products</h1>
+            <h1 className="page_tital">All Menu</h1>
             <ul className="Home__products">{console.log(menus)}
                     {menus.map((product) => {
                         return(
@@ -36,6 +36,14 @@ export default styled(Allmenu)`
 
     list-style-type: none;
     padding: 0;
-    margin: 0 0px;
+    margin: 30px 4% 0 4%;
   }
+
+  .page_tital{
+      font-size: 500%;
+      margin: 50px 0 0 3%;
+      font-family: 'Brush Script MT', cursive;
+
+  }
+
 `
