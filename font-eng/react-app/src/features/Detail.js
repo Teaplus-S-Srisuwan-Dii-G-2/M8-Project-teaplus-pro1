@@ -14,6 +14,7 @@ const Detail = ({ className }) => {
     const menus = useSelector((state) => state.menus)
     const menu = menus.find((menu) => menu.menuID === Number(id));
     const [ingredients, setingredients] = useState([]);
+    const [cooking_method, setgetcooking_method] = useState([]);
 
 
     useEffect(() => {
@@ -25,6 +26,16 @@ const Detail = ({ className }) => {
             setingredients(res.data)
         }
         getingredients();
+
+        async function getcooking_method() {
+            const res = await axios.get(
+                'http://localhost:8080/cooking_method/' + id
+            );
+            console.log(res.data)
+            setgetcooking_method(res.data)
+        }
+
+        getcooking_method();
 
     }, []);
 
@@ -56,7 +67,17 @@ const Detail = ({ className }) => {
                         </ul>
                     </div>
                     <div className="Products__name ">Cooking Method</div>
-                    <div className="method">{menu.cooking_method}</div>
+                    <div className="method_li">
+                    <ul className=" ">
+                            {cooking_method.map((method) => (
+                                <li className=" ">
+                                    <div className="row method_li">
+                                        <div className=" ">{method.cooking_method}</div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </>
@@ -90,6 +111,7 @@ display: inline-block;
     white-space: nowrap;
     width: 100%;
     display: inline-block;
+    margin-top: 30px;
   }
 
   small.Products__type {
@@ -116,6 +138,11 @@ img.menu-image {
 .ingredient_list{
 width: 150%;
 
+}
+
+.method_li{
+    margin-top: 30px;
+    margin-right: 5%;
 }
 
 `
